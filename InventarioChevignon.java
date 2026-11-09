@@ -26,8 +26,18 @@ public class InventarioChevignon {
                         }
                     }
                     break;
+
                 case 2:
+                    System.out.print("Ingrese el nombre de la prenda a buscar: ");
+                    String prendaBuscada = leer.nextLine();
+                    
+                    if (buscarReferencia(referencias, prendaBuscada)) {
+                        System.out.println("La prenda SÍ está disponible en la tienda.");
+                    } else {
+                        System.out.println("La prenda NO se encuentra en el inventario.");
+                    }
                     break;
+
                 case 3:
                     System.out.print("Ingrese el nombre de la nueva prenda: ");
                     String nuevaPrenda = leer.nextLine();
@@ -40,12 +50,25 @@ public class InventarioChevignon {
                         }
                     }
                     break;
+
                 case 4:
                     System.out.println("Cerrando aplicación...");
                     break;
+
                 default:
                     System.out.println("Opción no válida.");
             }
         } while (opcionMenu != 4);
+
+        leer.close();
+    }
+
+    public static boolean buscarReferencia(String[] arreglo, String nombreBuscado) {
+        for (String prenda : arreglo) {
+            if (prenda != null && prenda.equals(nombreBuscado)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
